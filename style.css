@@ -1,26 +1,53 @@
-*{
+*,
+::before,
+::after{
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 body{
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 0;
-    margin: 0;
+    font-family: sans-serif;
+    position: relative;
 }
-header{
-    float: left;
-    width: 15%;
-    height: 100vh;
+header,
+.header-responsive{
+    width: 250px;
+    position: absolute;
+    left: 0;
+    top: 0;
     border-left: 5px solid #335f8a;
+    background-color: white;
+    z-index: 100;
+}
+
+.header-responsive{
+    display: none;
+}
+
+#burger-menu,
+#burger{
+    display: none;
+}
+
+.btn-burger{
+    display: inline-block;
+    background-color: #335f8a;
+    color: white;
+    transform: rotate(90deg);
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    margin-left: 8px;
+    border-radius: 4px;
+    position: relative;
+    z-index: 2000;
+    border: 2px solid white;
+    box-shadow: 0 0 3px #335f8a;
 }
 
 header a img{
     width: 100%;
-}
-
-header::after{
-    content: "";
-    clear: both;
-    display: table;
 }
 
 nav{
@@ -57,7 +84,7 @@ li a.dec{
     margin-top: 20px;
 }
 .element{
-    width:100%;
+    width: 100%;
     display: inline-block;
     padding: 15px;
     color: white;
@@ -88,25 +115,22 @@ li a.dec{
 
 .blue{
     background-color:#335f8a;
-    padding: 10px;
-    float: left;
-    width: 85%;
+    padding: 20px;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
     text-align: center;
 }
-.blue::after{
-    content: "";
-    display: block;
-}
+
 main{
-    width: 1000px;
-    margin: auto;
-}
-.container_main1{
-    clear: right;
-    padding: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 140px;
+    padding-left: 160px;
 }
 .main-content{
-    border: 2px solid grey;
+    border: 2px solid rgb(203, 203, 203);
     width:600px;
     margin: auto;
     padding: 130px 50px 50px;
@@ -115,15 +139,28 @@ main{
     background-position: center 20px;
     text-align: center;
 }
-
+h1{
+    position: relative;
+}
+h1::after{
+    display: block;
+    content: ' ';
+    position: absolute;
+    width: 100%;
+    margin-top: 20px;
+    border-bottom: 4px dotted grey;
+    text-align: center;
+}
 button{
     display: inline-block;
-    margin-top: 30px;
+    margin-top: 50px;
     border: none;
     outline: none;
     padding: 15px;
+    font-weight: bold;
+    font-size: 20px;
     width: 250px;
-    background-color: rgba(24, 95, 24, 0.7);
+    background-color: rgba(26, 97, 26, 0.972);
     border-radius:5px;
     color: white;
 }
@@ -133,60 +170,68 @@ button:hover{
 
 .container-menu_deroul{
     text-align: center;
-    padding: 100px 0;
+    padding-left: 150px;
+    position: absolute;
+    top: 135%;
+    display: flex;
+    justify-content: center;
 }
 .container-menu_deroul a{
     text-decoration: none;
     color: rgb(191, 41, 41);
+    text-align: left;
+    display: block;
 }
 .container-menu_deroul a:hover{
     color: #71a1d1;
 }
 select{
     width: 300px;
-    height: 35px;
     border-radius: 3px;
     padding: 10px;
+    border:2px solid #5079a2;
+    display: block;
 }
 
-@media (max-width:830px) {
-    header,.blue,main{
-        float: none;
-        width:100%;
-        height: auto;
-    }
-    .blue{
+
+@media all and (max-width: 1120px) {
+    header{
         display: none;
     }
-    header{
-        border-left: none;
-    }
-    header a{
-        display: inline;
-        padding: 0;
-    }
-    header a img{
-        width: 100px;
-    }
-    li a{
-        width: 100%;
-        padding: 10px;
-        display: inline-block;
-        text-align: center;
-    }
-    .container{
-        padding: 20px;text-align: center;margin-top: 20px;
-    }
-    .element1,.element3{
-        border-radius: 0;
-    }
     main{
-        padding:20px;
+        display: block;
+        padding: 100px 20px 20px 20px;
     }
     .main-content{
-        border: 2px solid grey;
-        width:100%;
+        border: 2px solid rgb(203, 203, 203);
+        width: 100%;
         margin: auto;
-        padding: 50px;
+        padding: 130px 20px 30px;
+        background-image: url(Error_104px_1.png);
+        background-repeat: no-repeat;
+        background-position: center 20px;
+        text-align: center;
+    }
+   
+    .container-menu_deroul{
+        margin-top: 50px;
+        text-align: center;
+        position: static;
+        display: flex;
+        justify-content: center;
+        padding-left: 0;
+    }
+    .blue{
+        background-color:#335f8a;
+        padding: 20px;
+        position: static;
+        width: auto;
+        text-align: center;
+    }
+    #burger-menu{
+        display: block;
+    }
+    #burger:checked ~ .header-responsive{
+        display: block;
     }
 }
